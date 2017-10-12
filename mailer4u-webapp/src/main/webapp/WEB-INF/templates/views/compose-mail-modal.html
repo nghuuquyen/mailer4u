@@ -1,0 +1,52 @@
+<section class="compose-mail-modal">
+	<div class="container-fluid">
+		<div class="row">
+			<h3 style="margin-left: -15px;">
+				<span class="glyphicon glyphicon-envelope"></span> Compose Mail
+			</h3>
+
+			<form class="form-horizontal" ng-submit="submit()" novalidate>
+				<div class="form-group">
+					<label class="control-label" for="to">To </label>
+					<tags-input name=to " id="to" ng-model="mail.to"></tags-input>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="cc">CC </label>
+					<tags-input name=cc " id="cc" ng-model="mail.cc"></tags-input>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="bcc">BCC </label>
+					<tags-input name=bcc " id="bcc" ng-model="mail.bcc"></tags-input>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="subject">Subject </label> <input
+						class="form-control" name="subject" id="subject" type="text"
+						ng-model="mail.subject">
+				</div>
+
+				<div class="form-group">
+					<div text-angular ng-model="mail.content"></div>
+				</div>
+
+				<div class="form-group">
+					<input type="file" name="file" ngf-select ng-model="files"
+						ngf-multiple="true"></input>
+				</div>
+
+				<div class="form-group">
+					<ul class="list-group">
+						<li ng-repeat="file in files" class="list-group-item"><span
+							style="color: red;" class="glyphicon glyphicon-remove"></span>
+							{{file.name}}</li>
+					</ul>
+				</div>
+
+				<div class="form-group">
+					<button type="button" class="btn btn-default">Cancel</button>
+					<button type="submit" class="btn btn-success">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

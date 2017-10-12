@@ -1,0 +1,130 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<title th:text="#{mailer4u.app.title}">Mailer4U Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Vender CSS Files -->
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/jquery.min.js"
+	th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+
+<link
+	th:href="@{/webjars/ng-tags-input/ng-tags-input.bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<link th:href="@{/webjars/ng-tags-input/ng-tags-input.min.css}"
+	rel="stylesheet" media="screen" />
+<link
+	th:href="@{/webjars/ng-tags-input/ng-tags-input.bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<link
+	th:href="@{/webjars/ng-tags-input/ng-tags-input.bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<link th:href="@{/webjars/font-awesome/css/font-awesome.min.css}"
+	rel="stylesheet" media="screen" />
+<link th:href="@{/webjars/textAngular/textAngular.css}" rel="stylesheet"
+	media="screen" />
+<!-- Vender CSS Files -->
+
+<!-- Angular JS Files  -->
+<script th:src="@{/webjars/angularjs/angular.min.js}"
+	type="text/javascript"></script>
+<script th:src="@{/webjars/angular-resource/angular-resource.min.js}"
+	type="text/javascript"></script>
+<script th:src="@{/webjars/angular-ui-router/angular-ui-router.min.js}"
+	type="text/javascript"></script>
+
+<!-- Angular Bootstrap UI -->
+<script
+	th:src="@{/webjars/angular-ui-bootstrap/ui-bootstrap-tpls.min.js}"
+	type="text/javascript"></script>
+<!-- Angular Tags Input -->
+<script th:src="@{/webjars/ng-tags-input/ng-tags-input.min.js}"
+	type="text/javascript"></script>
+
+<!-- Angular Text Editor -->
+<script type="text/javascript"
+	th:src="@{/webjars/textAngular/textAngular-rangy.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/textAngular/textAngular-sanitize.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/textAngular/textAngular.min.js}"></script>
+
+<!-- Angular File Upload -->
+<script type="text/javascript"
+	th:src="@{/webjars/ng-file-upload/ng-file-upload.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/ng-file-upload/ng-file-upload-shim.min.js}"></script>
+<!-- Angular JS Files  -->
+
+
+<!-- Application JS Files -->
+<script th:src="@{/public/js/app.js}" type="text/javascript"></script>
+
+<script th:src="@{/public/js/configs/routes.js}" type="text/javascript"></script>
+
+<script th:src="@{/public/js/controllers/login.client.controller.js}"
+	type="text/javascript"></script>
+
+<script
+	th:src="@{/public/js/controllers/compose-mail-modal.client.controller.js}"
+	type="text/javascript"></script>
+
+<script th:src="@{/public/js/controllers/mail-box.client.controller.js}"
+	type="text/javascript"></script>
+
+<script
+	th:src="@{/public/js/services/authentication.client.services.js}"
+	type="text/javascript"></script>
+
+<script th:src="@{/public/js/services/mail.client.services.js}"
+	type="text/javascript"></script>
+
+<script th:src="@{/public/js/services/user.client.services.js}"
+	type="text/javascript"></script>
+
+<script
+	th:src="@{/public/js/controllers/mail-detail.client.controller.js}"
+	type="text/javascript"></script>
+<script
+	th:src="@{/public/js/controllers/list-mail.client.controller.js}"
+	type="text/javascript"></script>
+<script
+	th:src="@{/public/js/services/local-storage-manager.client.services.js}"
+	type="text/javascript"></script>
+<!-- Application JS Files -->
+
+<!-- Application CSS Files -->
+<link th:href="@{/public/css/layout.css}" rel="stylesheet"
+	media="screen" />
+<link th:href="@{/public/css/login.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/public/css/mail-box.css}" rel="stylesheet"
+	media="screen" />
+<link th:href="@{/public/css/compose-mail-modal.css}" rel="stylesheet"
+	media="screen" />
+<!-- Application CSS Files -->
+
+</head>
+<body ng-app="mailer4u">
+	<header>
+		<div th:raplace="fragments/header :: header"></div>
+	</header>
+
+	<article>
+		<div class="wrapper">
+			<!-- <div th:replace="${view} :: content" >Content</div> -->
+			<div ui-view=""></div>
+		</div>
+	</article>
+
+	<footer>
+		<div th:replace="fragments/footer :: footer"></div>
+	</footer>
+</body>
+</html>

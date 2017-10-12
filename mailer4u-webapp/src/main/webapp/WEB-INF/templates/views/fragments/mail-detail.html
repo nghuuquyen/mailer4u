@@ -1,0 +1,91 @@
+<section ng-init="initMailDetailPage()">
+	<div class="inbox-head">
+		<h3>Inbox</h3>
+		<form action="#" class="pull-right position">
+			<div class="input-append">
+				<input type="text" class="sr-input" placeholder="Search Mail" />
+				<button class="btn sr-btn" type="button">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="inbox-body">
+				<div class="mail-option">
+					<a ng-click="backToMailList()" class="np-btn" href="#"><i
+						class="fa fa-angle-left  pagination-left"></i> Back</a>
+				</div>
+
+				<table class="table">
+					<colgroup>
+						<col width="20%">
+						<col width="20%">
+						<col width="20%">
+						<col width="20%">
+						<col width="20%">
+					</colgroup>
+					<tbody>
+						<tr ng-repeat-start="mail in mails"
+							ng-class="mail.seen ? '' : 'unread'">
+							<td class="view-message  dont-show">{{mail.from[0].email}}</td>
+							<td class="view-message ">{{mail.subject}}</td>
+							<td class="view-message  inbox-small-cells"><i
+								ng-class="mail.attachments.length > 0 ? 'fa fa-paperclip' : ''"></i></td>
+							<td class="view-message  text-right">{{mail.receivedDate |
+								date : 'dd-MM-yyyy HH:mm:ss'}}</td>
+							<td align="right"><button ng-click="replyMail(mail)"
+									class="btn btn-default" type="submit">
+									<span class="glyphicon glyphicon-share-alt"></span> Reply
+								</button></td>
+						</tr>
+						<tr ng-repeat-end="">
+							<td colspan="5">
+								<div class="container-fluid">
+									<div class="row">
+										<div ng-bind-html="mail.content | toTrusted"></div>
+									</div>
+								</div>
+								<ul class="list-group">
+									<li ng-repeat="item in mail.attachments"
+										class="list-group-item"><a target="_self"
+										href="{{item.link}}">{{item.fileName}}</a></li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Reply Editor -->
+				<form id="reply-form" class="form-horizontal" style="padding: 15px;"
+					ng-submit="replyFormSubmit()" novalidate>
+
+					<div class="form-group">
+						<div text-angular ng-model="replyContent"></div>
+					</div>
+
+					<div class="form-group">
+						<input type="file" name="file" ngf-select ng-model="files"
+							ngf-multiple="true"></input>
+					</div>
+
+					<div class="form-group">
+						<ul class="list-group">
+							<li ng-repeat="file in files" class="list-group-item"><span
+								style="color: red;" class="glyphicon glyphicon-remove"></span>
+								{{file.name}}</li>
+						</ul>
+					</div>
+
+					<div class="form-group">
+						<button type="button" class="btn btn-default">Cancel</button>
+						<button type="submit" class="btn btn-success">Submit</button>
+					</div>
+				</form>
+				<!-- Reply Editor -->
+			</div>
+		</div>
+	</div>
+</section>

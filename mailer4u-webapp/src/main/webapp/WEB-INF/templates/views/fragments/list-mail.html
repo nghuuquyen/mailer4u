@@ -1,0 +1,116 @@
+<section ng-init="initPage()">
+	<div class="inbox-head">
+		<h3>Inbox</h3>
+		<form action="#" class="pull-right position">
+			<div class="input-append">
+				<input type="text" class="sr-input" placeholder="Search Mail" />
+				<button class="btn sr-btn" type="button">
+					<i class="fa fa-search"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+	<div class="inbox-body">
+		<div class="mail-option">
+			<div class="chk-all">
+				<input type="checkbox" class="mail-checkbox mail-group-checkbox" />
+				<div class="btn-group">
+					<a data-toggle="dropdown" href="#" class="btn mini all"
+						aria-expanded="false"> All <i class="fa fa-angle-down "></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#"> None</a></li>
+						<li><a href="#"> Read</a></li>
+						<li><a href="#"> Unread</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="btn-group">
+				<a data-original-title="Refresh" data-placement="top"
+					data-toggle="dropdown" href="#" class="btn mini tooltips"> <i
+					class=" fa fa-refresh"></i>
+				</a>
+			</div>
+			<div class="btn-group hidden-phone">
+				<a data-toggle="dropdown" href="#" class="btn mini blue"
+					aria-expanded="false"> More <i class="fa fa-angle-down "></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+					<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+					<li class="divider"></li>
+					<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+				</ul>
+			</div>
+			<div class="btn-group">
+				<a data-toggle="dropdown" href="#" class="btn mini blue"> Move
+					to <i class="fa fa-angle-down "></i>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+					<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+					<li class="divider"></li>
+					<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+				</ul>
+			</div>
+
+			<ul class="unstyled inbox-pagination">
+				<li><span>1-50 of 234</span></li>
+				<li><a class="np-btn" href="#"><i
+						class="fa fa-angle-left  pagination-left"></i></a></li>
+				<li><a class="np-btn" href="#"><i
+						class="fa fa-angle-right pagination-right"></i></a></li>
+			</ul>
+		</div>
+		<table class="table table-inbox table-hover">
+			<tbody>
+				<tr ui-sref="mail-box.mail-detail({emailMessage : mail})"
+					ng-repeat="mail in mails" ng-class="mail.seen ? '' : 'unread'">
+					<td class="inbox-small-cells"><input type="checkbox"
+						class="mail-checkbox" /></td>
+					<td class="inbox-small-cells"><i
+						class="fa fa-star inbox-started"></i></td>
+					<td class="view-message  dont-show">{{mail.from[0].email}}</td>
+					<td class="view-message" ng-bind-html="mail.subject | toTrusted"></td>
+					<td class="view-message  inbox-small-cells"><i
+						ng-class="mail.attachments.length > 0 ? 'fa fa-paperclip' : ''"></i></td>
+					<td class="view-message  text-right">{{mail.receivedDate |
+						date : 'dd-MM-yyyy HH:mm:ss'}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Paging Selection -->
+		<div ng-show="!isLoadingData && mails.length === 0">
+			<h3>No records.</h3>
+		</div>
+		<div class="container-fluid">
+			<div class="row" style="margin-left: -30px; margin-right: -30px;">
+				<div class="col-md-5">
+					<uib-pagination total-items="totalRecord"
+						ng-model="currentPageSearch" max-size="maxSizePagination"
+						ng-change="pageChanged()" items-per-page="pageSize"
+						class="pagination-sm" boundary-link-numbers="true">
+					</uib-pagination>
+				</div>
+				<div ng-show="isLoadingData">
+					Please Wait, Loading...
+				</div>
+				<div class="col-md-2 col-md-offset-5" align="right">
+					<div class="form-group" style="margin-top: 15px;">
+						<select class="form-control" ng-model="viewBy"
+							ng-change="setItemsPerPage(viewBy)">
+							<option ng-selected="viewBy === 20" value="20">20</option>
+							<option value="30">30</option>
+							<option value="40">40</option>
+							<option value="50">50</option>
+						</select> records at a time.
+					</div>
+				</div>
+					
+			</div>
+			<!-- Paging Selection -->
+		</div>
+	</div>
+</section>
