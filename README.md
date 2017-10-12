@@ -1,6 +1,6 @@
-# mailer4u - Mail Clien 
+# Mailer4U - Mail Client 
 
-Mail client using Spring Boot + Spring MVC + Angular JS 1.x. 
+Mail client using Spring Boot + Spring REST + Spring MVC + Angular JS 1.x. 
 
 
 # Author
